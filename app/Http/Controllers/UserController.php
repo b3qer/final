@@ -21,6 +21,7 @@ class UserController extends Controller
     }
     public function register(Request $request)
     {
+       // return $request;
 
         $validator = Validator::make($request->all(), [
             'name' => 'required',
@@ -42,6 +43,7 @@ class UserController extends Controller
                 'role_id' => $request['type']
             ]);
         } else {
+            
             $user = User::create([
                 'name' => $request['name'],
                 'username' => $request['username'],

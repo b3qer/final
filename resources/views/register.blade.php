@@ -177,8 +177,8 @@
                     <div class="form-group">
                       <label for="exampleFormControlSelect1">register as<span>*</span></label>
                       <select class="form-control w-50 " id="registerAs" name="type">
-                        <option value="1">Teacher</option>
-                        <option value="2">Student</option>
+                        <option value="2">Teacher</option>
+                        <option value="3">Student</option>
 
                       </select>
                     </div>
@@ -232,12 +232,12 @@
       $("#registerAs").change(function() {
         var number = $(this).children("option:selected").val();
         console.log(number);
-        if (number == 1) {
+        if (number == 2) {
           $('#regform').empty();
           $('#regform').append(teacher);
           
           
-        } else if (number == 2) {
+        } else if (number == 3) {
           $('#regform').empty();
           $('#regform').append(student);
          

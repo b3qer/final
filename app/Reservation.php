@@ -16,4 +16,10 @@ class Reservation extends Model
     {
         return $this->belongsTo('App\Project' , 'project_id', 'id');
     }
+    public function teacher()
+    {
+        return $this->belongsTo('App\User' , 'teacher_id', 'id');
+    }
+    // teacher relation
+    // and student type in register
 }

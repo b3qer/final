@@ -195,7 +195,10 @@
                       <select class="form-control w-50 " id="studentlist"  name="department_id">
                         <option value="{{$project->department_id}}">{{$project->department->name}}</option>
                         @forelse ($departments as $department)
+                        @if ($department->id != $project->department_id)
                         <option value="{{$department->id}}">{{$department->name}}</option>
+                        @endif
+                        
                           @empty
                               
                           @endforelse

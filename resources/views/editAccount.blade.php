@@ -191,7 +191,10 @@
                         <select class="form-control w-50 " id="registerAs" name="department_id">
                           <option value="{{$user->department_id}}">{{$user->department->name}}</option>
                           @forelse ($departments as $department)
+                          @if ($user->department_id != $department->id)
                           <option value="{{$department->id}}">{{$department->name}}</option>
+                          @endif
+                          
                             @empty
                                 
                             @endforelse

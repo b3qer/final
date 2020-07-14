@@ -89,7 +89,6 @@ class AdminController extends Controller
        Project::truncate();
        Reservation::truncate();
        Notify::truncate();
-       Auth::logout();
        User::truncate();
        User::create([
          'name' => 'admin',
@@ -102,6 +101,7 @@ class AdminController extends Controller
          'email' => null,
          'active' => true
        ]);
+       Auth::logout();
        return redirect('/');
     }
 }
