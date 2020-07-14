@@ -31,7 +31,7 @@ class TeacherController extends Controller
         if ($validator->fails()) {
             return back()->withErrors(['message' => ['Please fill inputs with correct data']]);
         }
-        $request['teacher_id'] = 2;
+        $request['teacher_id'] = auth()->user()->id;
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $name = time() . '.' . $image->getClientOriginalExtension();
@@ -91,7 +91,7 @@ class TeacherController extends Controller
     public function showReservations()
     {
         //auth user id
-        $reservations = auth()->user()->reservation()->where('accept', false)->where('teacher_id', 2)->get();
+        $reservations = auth()->user()->reservation()->where('accept', false)->get();
         return view('requests', ['reservations' => $reservations]);
     }
     public function checkReservation(Request $request)

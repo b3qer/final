@@ -31,7 +31,7 @@ class UserController extends Controller
         if ($validator->fails()) {
             return back()->withErrors(['message' => ['Please fill inputs with correct data']]);
         }
-        if ($request['type'] == 1) {
+        if ($request['type'] == 2) {
             $user = User::create([
                 'name' => $request['name'],
                 'username' => $request['username'],
@@ -103,7 +103,7 @@ class UserController extends Controller
         }
         if (isset($request['delete'])) {
             $user = User::findOrFail($request['id'])->delete();
-            return redirect('/admin/students');
+            return redirect('/');
         }
         if (isset($request['password'])) {
             //return $request['password'];
