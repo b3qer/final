@@ -78,7 +78,9 @@ class UserController extends Controller
     public function showProject($id)
     {
         $project = Project::findOrFail($id);
-        $count = Reservation::where('student_id', auth()->user()->id)->where('accept', true)->get()->count();
+        $count = 0;
+        if (auth()->user())
+            $count = Reservation::where('student_id', auth()->user()->id)->where('accept', true)->get()->count();
 
         $done = true;
         if ($count > 0)

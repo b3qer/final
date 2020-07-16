@@ -190,6 +190,8 @@
 
          Supervisor : {{$reservation->teacher->name}}
           <br>
+          Students Number : {{$reservation->project->std_number}}
+          <br>
             From Student : {{$reservation->student->name}}
             <br>
             Students : {{$reservation->std_names}}
