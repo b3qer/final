@@ -21,7 +21,7 @@ class UserController extends Controller
     }
     public function register(Request $request)
     {
-       // return $request;
+        // return $request;
 
         $validator = Validator::make($request->all(), [
             'name' => 'required',
@@ -43,7 +43,7 @@ class UserController extends Controller
                 'role_id' => $request['type']
             ]);
         } else {
-            
+
             $user = User::create([
                 'name' => $request['name'],
                 'username' => $request['username'],
@@ -78,12 +78,12 @@ class UserController extends Controller
     public function showProject($id)
     {
         $project = Project::findOrFail($id);
-        $count = Reservation::where('student_id', auth()->user()->id)->where('accept',true)->get()->count();
-       
+        $count = Reservation::where('student_id', auth()->user()->id)->where('accept', true)->get()->count();
+
         $done = true;
         if ($count > 0)
-        $done = false;
-        
+            $done = false;
+
         return view('projectDetails', ['project' => $project, 'done' => $done]);
     }
     public function showEditAccount($id)
@@ -92,10 +92,10 @@ class UserController extends Controller
             if (auth()->user()->id != $id)
                 return redirect()->back();
         }
-        $degrees = array('Prof. Dr.', 'Ass. Prof. Dr.', 'Lecturer Dr.','Lecturer','Ass. Lecturer');
+        $degrees = array('Prof. Dr.', 'Ass. Prof. Dr.', 'Lecturer Dr.', 'Lecturer', 'Ass. Lecturer');
         $departments = Department::all();
         $user = User::findOrFail($id);
-        return view('editAccount', ['user' => $user,'departments' => $departments, 'degrees' => $degrees]);
+        return view('editAccount', ['user' => $user, 'departments' => $departments, 'degrees' => $degrees]);
     }
     public function editAccount(Request $request)
     {
@@ -111,11 +111,16 @@ class UserController extends Controller
         if (isset($request['delete'])) {
             $user = User::findOrFail($request['id']);
             $reservation = $user->reservation()->get();
-            
+
             foreach ($reservation as $d) {
                 $d->delete();
             }
-           
+            $stdReservation = $user->stdReservation()->get();
+
+            foreach ($stdReservation as $d) {
+                $d->delete();
+            }
+
             $projects = $user->projects()->get();
             foreach ($projects as $d) {
                 $d->delete();
@@ -140,7 +145,7 @@ class UserController extends Controller
     public function showNotify()
     {
         $notifications = Notify::where('student_id', null)
-        ->orWhere('student_id' , auth()->user()->id)->orderBy('created_at', 'desc')->get();
+            ->orWhere('student_id', auth()->user()->id)->orderBy('created_at', 'desc')->get();
         return view('Student.notification', ['notifications' => $notifications]);
     }
 }

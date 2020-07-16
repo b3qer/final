@@ -53,4 +53,8 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Reservation' , 'teacher_id', 'id');
     }
+    public function stdReservation()
+    {
+        return $this->hasMany('App\Reservation' , 'student_id', 'id');
+    }
 }
