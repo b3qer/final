@@ -86,9 +86,10 @@ class UserController extends Controller
             if (auth()->user()->id != $id)
                 return redirect()->back();
         }
+        $degrees = array('Prof. Dr.', 'Ass. Prof. Dr.', 'Lecturer Dr.','Lecturer','Ass. Lecturer');
         $departments = Department::all();
         $user = User::findOrFail($id);
-        return view('editAccount', ['user' => $user,'departments' => $departments]);
+        return view('editAccount', ['user' => $user,'departments' => $departments, 'degrees' => $degrees]);
     }
     public function editAccount(Request $request)
     {

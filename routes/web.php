@@ -58,6 +58,11 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::post('/admin/departments', 'AdminController@addDepartment');
     Route::get('/admin/delete/department/{id}', 'AdminController@deleteDepartment');
 
+    Route::get('/admin/reservations', 'AdminController@showReservations');
+    Route::post('/admin/reservation', 'AdminController@checkReservation');
+
+    Route::get('/admin/results', 'AdminController@showResults');
+
     Route::get('/admin/restart/system', 'AdminController@restartSystem');
     Route::get('/admin/settings', function () {
         return view('admin.settings');
@@ -69,9 +74,8 @@ Route::middleware(['auth', 'isTeacher'])->group(function () {
     Route::post('/project/edit', 'TeacherController@editProject');
     Route::get('/teacher/myProjects', 'TeacherController@myProjects');
     
+    Route::get('/teacher/notification', 'TeacherController@showNotification');
     
-    Route::get('/teacher/reservations', 'TeacherController@showReservations');
-    Route::post('/teacher/reservation', 'TeacherController@checkReservation');
 
     Route::post('/teacher/project', 'TeacherController@addProject');
 

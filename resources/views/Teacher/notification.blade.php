@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Reservations</title>
+    <title>Projects Result</title>
 
     <!-- Font awesome -->
     <link href="/css/font-awesome.css" rel="stylesheet">
@@ -174,13 +174,13 @@
                             <div class="col-md-8">
                                 <div class="checkout-left">
                                     <div class="panel-group" id="accordion">
-@forelse ($reservations as $reservation)
+@forelse ($notification as $notify)
 <div class="panel panel-default aa-checkout-coupon">
     <div class="panel-heading">
         <h4 class="panel-title">
             <a data-toggle="collapse" data-parent="#accordion"
                 href="#collapseOne">
-                Project Title : {{$reservation->project->title}}
+            Reservation Done
             </a>
         </h4>
     </div>
@@ -189,21 +189,12 @@
 
 
 
-            From Student : {{$reservation->student->name}}
+        <a href="/project/{{$notify->project_id}}">Project Title : {{$notify->project->title}}</a>   
             <br>
-            Students : {{$reservation->std_names}}
+            Students : {{$notify->std_names}}
 
-            <br>
-            <form class="aa-login-form" action="/admin/reservation" method="post">
-                @csrf
-               
-            <input type="hidden" name="id" value="{{$reservation->id}}"
-                    class="form-control">
-                <input type="submit" value="Accept" name="accept"
-                    class="aa-browse-btn">
-                {{-- <input type="submit" value="Reject" name="reject"
-                    class="aa-browse-btn"> --}}
-            </form>
+            
+           
         </div>
     </div>
 </div>
@@ -225,7 +216,7 @@
 
                                         <div id="collapseOne" class="panel-collapse collapse in">
                                             <div class="panel-body">
-                                               No Reservations
+                                               No Notification
                                                 <br>
 
 

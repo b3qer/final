@@ -130,4 +130,9 @@ class TeacherController extends Controller
         ]);
         return back()->with('done', 'Reservation done');
     }
+    public function showNotification()
+    {
+        $notification = auth()->user()->reservation()->where('accept', true)->with(['project'])->get();
+        return view('teacher.notification', ['notification' => $notification]);
+    }
 }

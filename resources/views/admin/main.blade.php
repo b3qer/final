@@ -115,28 +115,30 @@
                             <li><a href="/">Home</a></li>
                             <li><a href="/projects">Projects</a></li>
                             @if (auth()->user())
-                              @if (auth()->user()->role_id == 1 || auth()->user()->role_id == 2)
-                                  @if (auth()->user()->role_id == 1)
-                                  <li><a href="/dashboard">Dashboard</a></li>
+                            @if (auth()->user()->role_id == 1 || auth()->user()->role_id == 2)
+                                @if (auth()->user()->role_id == 1)
+                                <li><a href="/dashboard">Dashboard</a></li>
+                                <li><a href="/admin/reservations">Reservations</a></li>
+                                <li><a href="/admin/results">Projects Result</a></li>
+                                <li><a href="/edit/account/{{auth()->user()->id}}">Account Settings</a></li>
+                                  <li><a href="/logout">logout</a></li>
+                                @else
+                                  <li><a href="/teacher/myProjects">My Projects</a></li>
+                                  <li><a href="/addproject">Add Project</a></li>
+                                  <li><a href="/teacher/notification">Notification</a></li>
                                   <li><a href="/edit/account/{{auth()->user()->id}}">Account Settings</a></li>
-                                    <li><a href="/logout">logout</a></li>
-                                  @else
-                                    <li><a href="/teacher/myProjects">My Projects</a></li>
-                                    <li><a href="/addproject">Add Project</a></li>
-                                    <li><a href="/teacher/reservations">Reservations</a></li>
-                                    <li><a href="/edit/account/{{auth()->user()->id}}">Account Settings</a></li>
-                                    <li><a href="/logout">logout</a></li>
-                                  @endif
-                              @else
-                              <li><a href="/student/notification">Notification</a></li>
-                                    <li><a href="/edit/account/{{auth()->user()->id}}">Account Settings</a></li>
-              
-                                    <li><a href="/logout">logout</a></li>
-                              @endif
+                                  <li><a href="/logout">logout</a></li>
+                                @endif
                             @else
-                              <li><a href="/login">Login</a></li>
-                              <li><a href="/register">Sing up</a></li>
+                            <li><a href="/student/notification">Notification</a></li>
+                                  <li><a href="/edit/account/{{auth()->user()->id}}">Account Settings</a></li>
+            
+                                  <li><a href="/logout">logout</a></li>
                             @endif
+                          @else
+                            <li><a href="/login">Login</a></li>
+                            <li><a href="/register">Sing up</a></li>
+                          @endif
               
               
                             {{-- <li><a href="logout.php">log Out</a></li> --}}

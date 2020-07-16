@@ -104,4 +104,28 @@ class AdminController extends Controller
        Auth::logout();
        return redirect('/');
     }
+    public function showReservations()
+    {
+        //auth user id
+        $reservations = Reservation::Where('accept', false)->orderBy('created_at', 'desc')->get();
+        return view('requests', ['reservations' => $reservations]);
+    }
+    public function checkReservation(Request $request)
+    {
+        // return $request;
+        $reservation = Reservation::findOrFail($request['id']);
+        Notify::create([
+            'title' => 'Accept Your Request',
+            'content' => 'Your Request for '.$reservation->title.' Project With '.$reservation->teacher->name,
+            'student_id' => $reservation->student_id
+        ]);
+        $reservation->update(['accept' => true]);
+        $project = $reservation->project()->first()->update(['requested' => true]);
+        return back()->with('done', 'Reservation done');
+    }
+    public function showResults()
+    {
+       $reservations = Reservation::where('accept', true)->orderBy('created_at', 'desc')->get();
+       return view('admin.results', ['reservations' => $reservations]);
+    }
 }

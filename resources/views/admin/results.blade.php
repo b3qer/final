@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Reservations</title>
+    <title>Projects Result</title>
 
     <!-- Font awesome -->
     <link href="/css/font-awesome.css" rel="stylesheet">
@@ -193,17 +193,8 @@
             <br>
             Students : {{$reservation->std_names}}
 
-            <br>
-            <form class="aa-login-form" action="/admin/reservation" method="post">
-                @csrf
-               
-            <input type="hidden" name="id" value="{{$reservation->id}}"
-                    class="form-control">
-                <input type="submit" value="Accept" name="accept"
-                    class="aa-browse-btn">
-                {{-- <input type="submit" value="Reject" name="reject"
-                    class="aa-browse-btn"> --}}
-            </form>
+            
+           
         </div>
     </div>
 </div>
