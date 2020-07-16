@@ -227,7 +227,10 @@
                    
                    
                     <input type="submit"  class="aa-browse-btn" name="Edit" value="Edit">
+                    @if (auth()->user()->role_id == 1)
                     <input type="submit" value="delete" class="aa-browse-btn" name="delete">
+                    @endif
+                   
                   </form>
                 </div>
               </div>

@@ -187,7 +187,8 @@
     <div id="collapseOne" class="panel-collapse collapse in">
         <div class="panel-body">
 
-
+          Supervisor : {{$reservation->teacher->name}}
+          <br>
 
             From Student : {{$reservation->student->name}}
             <br>
@@ -216,7 +217,7 @@
 
                                         <div id="collapseOne" class="panel-collapse collapse in">
                                             <div class="panel-body">
-                                               No Reservations
+                                               No Project Result
                                                 <br>
 
 

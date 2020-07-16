@@ -40,27 +40,28 @@ class CreateUsersTable extends Migration
                 'degree' => null,
                 'email' => null,
                 'active' => true
-            ],   [
-                'name' => 'teacher',
-                'username' => 'teacher',
-                'password' => Hash::make('123'),
-                'pure_password'=> '123',
-                'department_id' => 1,
-                'role_id' => 2,
-                'degree' => 'jkhj',
-                'email' => 'gfhgfh@fdgf.com',
-                'active' => false
-            ],   [
-                'name' => 'student',
-                'username' => 'student',
-                'password' => Hash::make('123'),
-                'pure_password'=> '123',
-                'department_id' => 1,
-                'role_id' => 3,
-                'degree' => 'jkhj',
-                'email' => 'gfhgfh@fdgf.com',
-                'active' => false
-            ],
+            ], 
+            //  [
+            //     'name' => 'teacher',
+            //     'username' => 'teacher',
+            //     'password' => Hash::make('123'),
+            //     'pure_password'=> '123',
+            //     'department_id' => 1,
+            //     'role_id' => 2,
+            //     'degree' => 'jkhj',
+            //     'email' => 'gfhgfh@fdgf.com',
+            //     'active' => false
+            // ],   [
+            //     'name' => 'student',
+            //     'username' => 'student',
+            //     'password' => Hash::make('123'),
+            //     'pure_password'=> '123',
+            //     'department_id' => 1,
+            //     'role_id' => 3,
+            //     'degree' => 'jkhj',
+            //     'email' => 'gfhgfh@fdgf.com',
+            //     'active' => false
+            // ],
             
         ]);
 

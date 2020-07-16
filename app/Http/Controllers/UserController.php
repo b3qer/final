@@ -109,7 +109,18 @@ class UserController extends Controller
             return back()->withErrors(['message' => ['Please fill inputs with correct data']]);
         }
         if (isset($request['delete'])) {
-            $user = User::findOrFail($request['id'])->delete();
+            $user = User::findOrFail($request['id']);
+            $reservation = $user->reservation()->get();
+            
+            foreach ($reservation as $d) {
+                $d->delete();
+            }
+           
+            $projects = $user->projects()->get();
+            foreach ($projects as $d) {
+                $d->delete();
+            }
+            $user->delete();
             return redirect('/');
         }
         if (isset($request['password'])) {

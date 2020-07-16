@@ -188,7 +188,8 @@
         <div class="panel-body">
 
 
-
+         Supervisor : {{$reservation->teacher->name}}
+          <br>
             From Student : {{$reservation->student->name}}
             <br>
             Students : {{$reservation->std_names}}
