@@ -209,8 +209,8 @@
                                    
                                 </div>
                                 <div class="aa-product-view-content">
-                                    <h3>Students Number: {{$project->std_number}}</h3>
-                                   
+                                    <h3 >Students Number: {{$project->std_number}}</h3>
+                                   <input type="hidden" id="std_number" value="{{$project->std_number}}">
                                 </div>
                                 <div class="aa-product-view-content">
                                     <h3>Descrption : {{$project->note}}</h3>
@@ -221,24 +221,14 @@
                                     enctype="multipart/form-data">
                                     @csrf
                                     @if (auth()->user())
-                                    @if (auth()->user()->role_id == 3)
+                                    @if (auth()->user()->role_id == 3 && $done == true)
                                     <div class="aa-product-view-content">
                                     <input type="hidden" name="project_id" value="{{$project->id}}"
                                             class="form-control">
                                     <input type="hidden" name="teacher_id" value="{{$project->teacher_id}}"
                                             class="form-control">
                                        
-                                        <div class="form-group">
-                                            <label for="exampleFormControlSelect1">No.Student<span>*</span></label>
-                                            <select class="form-control w-50 " id="studentlist" style="height:30px;"
-                                                name="d5">
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
-                                            </select>
-                                        </div><br>
+                                      <br>
                                         <label for="">Students name <span>*</span></label><br>
                                         <div id="group">
 
@@ -359,8 +349,8 @@
     </div>
     <script>
         $(document).ready(function() {
-      $("#studentlist").change(function() {
-        var number = $(this).children("option:selected").val();
+    
+        var number = $('#std_number').val();
         if (number == 1) {
           $('#group').empty();
           var data = '<input type="text" name="name1" placeholder="First Name">';
@@ -405,7 +395,7 @@
         } else {
           $('#group').empty();
         }
-      });
+      
     });
     </script>
 

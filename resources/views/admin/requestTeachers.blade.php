@@ -191,6 +191,8 @@
             <br>
             Email : {{$teacher->email}}
             <br>
+            Degree : {{$teacher->degree}}
+            <br>
            
             <form action="/admin/accept/teacher" method="post">
                 @csrf
