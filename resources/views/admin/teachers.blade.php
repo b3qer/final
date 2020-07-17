@@ -174,7 +174,7 @@
                                            
     <div id="collapseOne" class="panel-collapse collapse in">
         <div class="panel-body">
-            Student Name : {{$teacher->name}}
+            Teacher Name : {{$teacher->name}}
             <br>
             username : {{$teacher->username}}
             <br>
